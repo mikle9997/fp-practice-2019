@@ -18,7 +18,7 @@ instance Show Operator where
 
 data Term = IntConstant{ intValue :: Int }                            -- числовая константа
             | Variable{ varName :: String }                           -- переменная
-            | BinaryTerm{ op :: Operator, lhv :: Term, rhv :: Term } -- бинарная операция
+            | BinaryTerm{ op :: Operator, lhv :: Term, rhv :: Term }  -- бинарная операция
             deriving(Eq)
 
 instance Show Term where
