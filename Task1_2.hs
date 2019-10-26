@@ -48,7 +48,7 @@ pow :: Integer -> Integer -> Integer
 pow x 1 = x
 pow x y = x * pow x (y-1)
 
--- является ли данное число простым?z
+-- является ли данное число простым?
 isPrime :: Integer -> Bool
 isPrime x = foldl (\b a -> b && x `mod` a /= 0) True [2..(x-1)]
 
