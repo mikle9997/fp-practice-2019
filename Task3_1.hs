@@ -21,8 +21,30 @@ intToWPN x
   | x < 0     = Pred $ intToWPN (x+1)
   | otherwise = Zero
 
--- Ord Enum Show Num Real Real
--- instance Eq WeirdPeanoNumber where
+instance Eq WeirdPeanoNumber where
+  (==) x y = wpnToInt x == wpnToInt y
+
+instance Ord WeirdPeanoNumber where
+  (<=) x y = wpnToInt x <= wpnToInt y
+
+instance Enum WeirdPeanoNumber where
+  fromEnum x = undefined
+  toEnum   x = undefined
+
+instance Num WeirdPeanoNumber where
+  (+)         = undefined
+  (*)         = undefined
+  abs         = undefined
+  signum      = undefined
+  fromInteger = undefined
+  (-)         = undefined
+
+instance Real WeirdPeanoNumber where
+  toRational = undefined
+
+instance Integral WeirdPeanoNumber where
+  quotRem   = undefined
+  toInteger = undefined
 
 main :: IO ()
 main = do
@@ -32,3 +54,9 @@ main = do
   putStrLn "          -- Suite 2 --"
   let res2 = intToWPN res1
   putStrLn $ "intToWPN res1  -> " ++ show res2
+  putStrLn "          -- Suite 3 --"
+  let res3 = (Pred $ Succ $ Succ $ Succ $ Succ Zero) == (Succ $ Succ $ Succ Zero)
+  putStrLn $ "intToWPN res1  -> " ++ show res3
+  putStrLn "          -- Suite 4 --"
+  let res4 = (Succ $ Succ $ Succ $ Succ $ Succ Zero) >= (Succ $ Succ $ Succ Zero)
+  putStrLn $ "intToWPN res1  -> " ++ show res4
