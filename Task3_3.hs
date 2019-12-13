@@ -35,8 +35,8 @@ instance Monoid (PSetOR a) where
 
 -- Содержится ли искомое в каждом из множеств
 instance Monoid (PSetAND a) where
-    mempty = PSetAND (const False)
-    mappend (PSetAND p1) (PSetAND p2) = PSetAND (\x -> (&&) (p2 x) (p2 x))
+  mempty = PSetAND (const False)
+  mappend (PSetAND p1) (PSetAND p2) = PSetAND (\x -> (&&) (p2 x) (p2 x))
 
 -- Симметричная разность множеств a.k.a XOR
 instance Monoid (PSetXOR a) where
@@ -58,3 +58,9 @@ instance Monoid (PSetXOR a) where
 --   fmap f (PSetOR p) = PSetOR (\(f x) -> p x)
 --
 -- Но так Haskell не умеет
+--
+-- Также на ум приходит что-то такое :
+--    fmap f (PSetOR p) = PSetOR $ f . p
+-- Но это тоже не будет работать потому что :
+--    p :: a -> Bool
+--    f :: a -> b
