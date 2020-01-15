@@ -55,6 +55,6 @@ main = do
   putStrLn $ "concat zipper_1 zipper_2         -> " ++ show res1
   let res2  = insertManyAt 1 zipper_1 zipper_2
   putStrLn $ "insertManyAt 2 zipper_1 zipper_2 -> " ++ show res2
-  let res31  = subZipper 2 3 zipper_1
-  let res3 = goLeft . goLeft $ res31
+  let res3 = subZipper 1 3 zipper_1
+  let res31  = goLeft . goLeft $ res3
   putStrLn $ "subZipper 2 3 zipper_1           -> " ++ show res3
